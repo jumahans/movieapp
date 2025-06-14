@@ -45,7 +45,7 @@ function App() {
     <div className="w-full min-h-screen bg-gray-900 flex justify-center items-start pt-10">
       <div className="flex flex-col items-center max-w-xl">
         <img
-          src="/images/images.jpeg"
+          src="images/images.jpeg"
           alt="header"
           className="w-[600px]"
         />

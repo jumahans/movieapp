@@ -1,12 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
 import App from './App.jsx'
-import 'boxicons/css/boxicons.min.css';
 
+import './index.css'            // ✅ Tailwind CSS
+import 'boxicons/css/boxicons.min.css' // ✅ Optional icons
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
