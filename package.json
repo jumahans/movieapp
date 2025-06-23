@@ -1,5 +1,8 @@
 {
   "name": "movieapp",
+  "home": "movieapp",
+  "homepage": "https://jumahans.github.io/movieapp",
+
   "private": true,
   "version": "0.0.0",
   "type": "module",
