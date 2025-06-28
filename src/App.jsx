@@ -13,15 +13,34 @@ function App() {
 
   const fetchMovies = async (query = "Avengers") => {
     try {
-      const response = await fetch(`${BASE_URL}?s=${query}&apikey=${API_KEY}`);
-      if (!response.ok) throw new Error("Failed to fetch movies");
-
+      console.log('API_KEY:', API_KEY); // Debug log
+      console.log('Query:', query); // Debug log
+      
+      if (!API_KEY) {
+        throw new Error("API key is not configured. Please check your .env file.");
+      }
+      
+      const url = `${BASE_URL}?s=${encodeURIComponent(query)}&apikey=${API_KEY}`;
+      console.log('Request URL:', url); // Debug log
+      
+      const response = await fetch(url);
+      console.log('Response status:', response.status); // Debug log
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
-      if (data.Response === "False") throw new Error(data.Error);
-
+      console.log('API Response:', data); // Debug log
+      
+      if (data.Response === "False") {
+        throw new Error(data.Error || "Unknown API error");
+      }
+      
       setMovies(data.Search || []);
       seterrormessage('');
     } catch (error) {
+      console.error('Fetch error:', error); // Debug log
       seterrormessage(error.message || "Failed to fetch movies");
       setMovies([]);
     }
